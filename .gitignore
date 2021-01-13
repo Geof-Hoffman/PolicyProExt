@@ -1,1 +1,5 @@
 node_modules
+bootstrap.js
+clipboard.min.js
+jquery-3.1.0.min.js
+package-lock.json
