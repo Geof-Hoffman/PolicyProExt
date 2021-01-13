@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="jquery-3.1.0.min.js"></script>
+  <script src="bootstrap.js"></script>
+  <script src="popup.js"></script>
+  <title></title>
+  <style>
+    body {
+      margin: 0;
+      min-width: 500px;
+      padding: 10px 10px;
+    }
+    P{
+      background-color: #f44336;
+      padding: 10px 10px;
+      color: white;
+      text-align: center;
+
+    }
+    .copy{
+      display: none;
+    }
+    .topBtn{
+      width:20%;
+    }
+    .file{
+      width:50%;
+    }
+    .fileAction{
+      width:15%;
+    }
+    label {
+      text: 10;
+      float: left;
+    }
+
+    /* Include the padding and border in an element's total width and height */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Remove margins and padding from the list */
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Style the list items */
+    ul li {
+      cursor: pointer;
+      position: relative;
+      padding: 12px 8px 12px 40px;
+      list-style-type: none;
+      background: #eee;
+      font-size: 18px;
+      transition: 0.2s;
+
+      /* make the list items unselectable */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Set all odd list items to a different color (zebra-stripes) */
+    ul li:nth-child(odd) {
+      background: #f9f9f9;
+    }
+
+    /* Darker background-color on hover */
+    ul li:hover {
+      background: #ddd;
+    }
+
+    /* When clicked on, add a background color and strike out text */
+    ul li.checked {
+      background: #888;
+      color: #fff;
+      text-decoration: line-through;
+    }
+
+    /* Add a "checked" mark when clicked on */
+    ul li.checked::before {
+      content: '';
+      position: absolute;
+      border-color: #fff;
+      border-style: solid;
+      border-width: 0 2px 2px 0;
+      top: 10px;
+      left: 16px;
+      transform: rotate(45deg);
+      height: 15px;
+      width: 7px;
+    }
+
+    .row {
+      float: right;
+
+    }
+
+    #foo {
+      display: none;
+    }
+
+    #bar {
+      display: none;
+    }
+
+    .col-sm {
+      padding: 00px;
+      width: 25%;
+
+      float: left;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+
+      border-radius: 0;
+    }
+
+    .col-md {
+      padding: 10px;
+      width: 50%;
+      float: left;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+
+      border-radius: 0;
+    }
+
+    .col-md.bar {
+      display: none;
+
+    }
+
+    /* Style the close button */
+    .close {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 12px 16px 12px 16px;
+    }
+
+    .close:hover {
+      background-color: #f44336;
+      color: white;
+    }
+
+    /* Style the header */
+    .header {
+      background-color: #f44336;
+      padding: 30px 40px;
+      color: white;
+      text-align: center;
+    }
+
+    /* Clear floats after the header */
+    .header:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Style the input */
+    input {
+      margin: 0;
+      border: 1;      
+      border-radius: 5px;
+      width: 75%;
+      padding: 5px 5px 5px 5px;
+      float: left;
+      font-size: 16px;
+    }
+
+    /* Style the "Add" button */
+    .addBtn {
+      margin: 5;
+      border: 5;      
+      padding: 5px 5px 5px 5px;
+      float: left;
+      font-size: 16px;
+
+      border-radius: 5px;
+      width: 25%;
+      background: #d9d9d9;
+      color: #555;
+      float: left;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+     
+    }
+
+    select {
+      margin: 0;
+      border: 1;      
+      border-radius: 5px;
+      width: 75%;
+      padding: 5px 5px 5px 5px;
+      float: left;
+      font-size: 16px;
+    }
+    .addBtn:hover {
+      background-color: #bbb;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <div id="myDIV" class="header">
+     <h2 style="margin:5px">10 Minute Policy Pro</h2> 
+     <div>
+      <input type= "text" id="fileNum" class="file" placeHolder="File Number..."value="">
+      <input type= "button" id="issue" class="fileAction" value="I">
+      <input type= "button" id="problem" class="fileAction" value="P">
+      <input type= "button" id="popout" class="topBtn" value="Pop-Out">
+    </div> 
+    <div class="selectState"><select id="state" data-toggle="tooltip" title="Select state to begin">
+    </select> <span id="clear" class="addBtn">Clear All</span> </div>
+    <input type="text" id="myInput" data-toggle="tooltip" title="Add items from Curative tab" placeholder="Curative issues">
+    <span id="add" class="addBtn">Add</span>
+    <div><input id="address" data-toggle="tooltip" title="Enter address from Commitment/report/RW" type="text" placeholder="Address..."></div>
+    <div><input id="vesting" type="text" data-toggle="tooltip" title="Enter Vesting from Commitment" placeholder="Vesting..."></div>
+    <div><input id="loanAmount" type="text" data-toggle="tooltip" title="Enter Loan Amount from FLI" placeholder="loan Amount..."></div>
+    <div id="type" data-toggle="tooltip" title="Select Type from FLI" class="select">
+      <select>
+        <option>CONV</option>
+        <option>VA</option>
+        <option>FHA</option>
+      </select> 
+    </div>
+    <div><input id="date" type="date" data-toggle="tooltip" title="Enter date from FLI" placeholder="Mortgage Date..."><span id="copyDate" class="addBtn">Copy</span> </div>
+    
+      <div class=" row show" data-toggle="tooltip" title="Enter Endorsments from FLI">
+        <div class="col-sm"><input type="number" value="9"></div>
+        <div class="col-sm"><input type="number" value="8.1"></div>
+        <div class="col-sm"><input id="optEndOne" type="number" placeholder="Endrs.#" value=""></div>
+        <div class="col-sm"><input id="optEndtwo" type="number" placeholder="Endrs.#"></div>
+        <label>Endorsements</label>
+      </div>
+      <div><input type="number" min="0.01" step="0.01"  data-toggle="tooltip" title="enter gross premium from final rate-calc" id="premium" placeholder="Premium"><span id="copyPremium" class="addBtn">Copy</span> </div>
+      
+
+      <div class="row" data-toggle="tooltip" title="Enter endorsement costs from rate-calc"id="bar">
+        <div class="col-sm"><input id="costOne"type="number" min="0.01" step="0.01"  placeholder="$$$"></div>
+        <div class="col-sm"><input id="costTwo" type="number" min="0.01" step="0.01"  placeHolder="$$$"></div>
+        <div class="col-sm"><input id="costThree" type="number" min="0.01" step="0.01"  placeholder="$$$"></div>
+        <div class="col-sm"><input id="costFour" type="number" min="0.01" step="0.01"   placeholder="$$$"></div>
+      </div>
+      
+      <div><input id="checkNum" type="number" data-toggle="tooltip" title="Enter Check# from Report" placeholder="Check Number..."><span id="copyCheckNum"class="addBtn">Copy</span> </div>
+      <div><input type="number" id="UWsplit"  placeholder="UW Split"><span id="copyUWsplit" data-toggle="tooltip" title="Review documents then generate policy jacket" class="addBtn">Copy</span> </div>
+      <div><h3 id="number"></h3></div>
+      <p id="split"></p>
+</div>
+ 
+  <ul id="myUL"></ul>
+  <ul id="anotherUL"></ul>
+  
+  <button data-val="William G. Reilly"  >Bill R.</button>
+  <button data-val="Melanie Johnson">Mel</button>
+  <button data-val="Said deed of trust is secondary and subordinate to the lien of the insured deed of trust set forth under Schedule A hereof.">Sub</button>
+  <button data-val="tran"> tran</button>
+  <button data-val="ctic">ctic</button>
+  <button data-val="LOAN POLICY SET">LOAN POLICY SET</button>
+  <button data-val="UW SET">UW SET</button>
+  <button data-val="PI-StarterRepositoryShipments@propertyinsight.biz">FNF Policy Email</button>
+
+
+</div>
+
+<div id="hidden" class="copy"><input value="I'm hiding"> </div>
+
+</body>
+
+</html>
