@@ -573,10 +573,13 @@ $(function () {
     }
     //console.log(stateArray);
     $('#split').text(`UW: ${stateArray.UW} split: ${stateArray.split} CPL: ${stateArray.cpl}`);
-    var LPS = data[data.findIndex(data => data.state === stateName)].lps;
+    
+    var lps = data[data.findIndex(data => data.state === stateName)].lps;
     //console.log(LPS);
-    $("#lps").attr("title", LPS);
-
+    $("#lps").attr("title", lps);
+    var ups = data[data.findIndex(data => data.state === stateName)].ups;
+    //console.log(LPS);
+    $("#ups").attr("title", ups);
   };
 
   function hideItem() {
