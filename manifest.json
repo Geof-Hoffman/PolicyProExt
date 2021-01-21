@@ -1,6 +1,9 @@
 {
     "name": "Policy Pro",
     "version": "1.0",
+    "background":{
+    "scripts":["background.js"]
+    },
     "manifest_version": 2,
     "icons": {
         "128": "128.png",
@@ -12,12 +15,12 @@
         "default_icon": "16.png",
         "default_popup": "popup.html"
       },
-      "permissions": ["storage"],
+      "permissions": ["storage", "identity", "identity.email"],
       "content_scripts": [
         {
             "matches": ["<all_urls>"],
             "js":["popup.js"]
         }
-        
-    ]
+      ],
+      "options_page":"options.html"
 }
