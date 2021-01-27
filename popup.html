@@ -219,7 +219,7 @@
      <div>
       <input type= "text" id="fileNum" class="file" placeHolder="File Number..."value="">
       <input type= "button" id="issue" class="fileAction" value="I">
-      <input type= "button" id="problem" class="fileAction" value="P">
+      <input type= "button" id="problem"  class="fileAction" value="P">
       <input type= "button" id="popout" class="topBtn" value="Pop-Out">
     </div> 
     <div class="selectState"><select id="state" data-toggle="tooltip" title="Select state to begin">
@@ -239,11 +239,12 @@
     <div><input id="date" type="date" data-toggle="tooltip" title="Enter date from FLI" placeholder="Mortgage Date..."><span id="copyDate" class="addBtn">Copy</span> </div>
     
       <div class=" row show" data-toggle="tooltip" title="Enter Endorsments from FLI">
+        
         <div class="col-sm"><input type="number" value="9"></div>
         <div class="col-sm"><input type="number" value="8.1"></div>
         <div class="col-sm"><input id="optEndOne" type="number" placeholder="Endrs.#" value=""></div>
         <div class="col-sm"><input id="optEndtwo" type="number" placeholder="Endrs.#"></div>
-        <label>Endorsements</label>
+        
       </div>
       <div><input type="number" min="0.01" step="0.01"  data-toggle="tooltip" title="enter gross premium from final rate-calc" id="premium" placeholder="Premium"><span id="copyPremium" class="addBtn">Copy</span> </div>
       
@@ -255,12 +256,12 @@
         <div class="col-sm"><input id="costFour" type="number" min="0.01" step="0.01"   placeholder="$$$"></div>
       </div>
       
-      <div><input id="checkNum" type="number" data-toggle="tooltip" title="Enter Check# from Report" placeholder="Check Number..."><span id="copyCheckNum"class="addBtn">Copy</span> </div>
+      <div><input id="checkNum" class="checkNum" type="number" data-toggle="tooltip" title="Enter Check# from Report" placeholder="Check Number..."><span id="copyCheckNum"class="addBtn">Copy</span> </div>
       <div><input type="number" id="UWsplit"  placeholder="UW Split"><span id="copyUWsplit" data-toggle="tooltip" title="Review documents then generate policy jacket" class="addBtn">Copy</span> </div>
       <div><h3 id="number"></h3></div>
       <p id="split"></p>
 </div>
- 
+  
   <ul id="myUL"></ul>
   <ul id="anotherUL"></ul>
   
@@ -272,11 +273,11 @@
   <button id="lps" data-toggle="tooltip" title="" data-val="LOAN POLICY SET">LOAN POLICY SET</button>
   <button data-toggle="tooltip" title="" id="ups" data-val="UW SET">UW SET</button>
   <button data-val="PI-StarterRepositoryShipments@propertyinsight.biz">FNF Policy Email</button>
-
+  <button id='jacket' data-toggle="tooltip" title="">Jacket</button>
+  
 
 </div>
-
-<div id="hidden" class="copy"><input value="I'm hiding"> </div>
+<!--<div id="hidden" class="copy"><input value="I'm hiding"> </div>-->
 
 </body>
 
